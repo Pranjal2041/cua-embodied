@@ -1,0 +1,38 @@
+{
+  "_comment": "Copy to configs/tasks.json and fill in local paths. Keys starting with _ are ignored.",
+  "vlnverse": {
+    "manifest": "data/vlnverse/coarse_challenge150_manifest.json",
+    "episode_index": 0,
+    "bridge_url": "http://127.0.0.1:8793",
+    "collision": false
+  },
+  "dialnav": {
+    "split": "data/dialnav/RAIN_holistic/val_unseen.json",
+    "episode_index": 0,
+    "connectivity_dir": "data/dialnav/Matterport3DSimulator/connectivity",
+    "rgb_dir": "data/dialnav/matterport3d/val/rgb",
+    "guide_model": "gemini-3.6-flash"
+  },
+  "opensun3d": {
+    "scene_id": "437294",
+    "description_id": "9fee2b76-202a-42aa-882d-e27b89999d8d",
+    "objective": "Plug the device in the socket next to the table lamp",
+    "data_root": "data/scenefun3d/437294",
+    "reference_video_dir": "data/scenefun3d/reference_videos/437294",
+    "pinpoint": {
+      "python": "/path/to/pinpoint3d/venv/bin/python",
+      "repo": "external/PinPoint3D",
+      "checkpoint": "checkpoints/pinpoint3d_checkpoint.pth",
+      "wsl_distro": null
+    },
+    "volt_input_cache": "data/scenefun3d/volt_inputs/437294.npz",
+    "volt_prediction_cache": "data/scenefun3d/volt_predictions/437294"
+  },
+  "mevis": {
+    "video_id": "750176309b94",
+    "expression_id": "18",
+    "data_root": "data/mevisv2/valid_u",
+    "sam3_checkpoint": "checkpoints/sam3/sam3.pt",
+    "video_cache": "outputs/mevis_video_cache"
+  }
+}

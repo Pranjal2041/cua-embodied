@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cua-embodied"
+version = "0.1.0"
+description = "One computer-use agent operating software for four embodied AI competitions"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "google-genai>=1.30",
+    "numpy",
+    "pillow>=10.1",
+]
+
+[project.optional-dependencies]
+# Each app needs its own backend libraries. Install only what you use.
+opensun3d = ["torch", "trimesh", "opencv-python", "scipy"]
+mevis = ["torch", "imageio[ffmpeg]", "scikit-image"]
+all = ["cua-embodied[opensun3d,mevis]"]
+
+[tool.setuptools.packages.find]
+include = ["cua_embodied*"]
+
+[tool.setuptools.package-data]
+cua_embodied = ["gui/static/*", "computer/driver/*.cjs"]

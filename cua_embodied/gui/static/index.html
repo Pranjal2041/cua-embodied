@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Competition software</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <nav id="apps" aria-label="Competitions"></nav>
+    <span id="status" role="status">Connecting</span>
+    <button id="instructions">Instructions</button>
+    <button id="restart">New session</button>
+  </header>
+  <section class="task" aria-label="Task description">
+    <span class="task-label">Task</span><h1 id="objective">Loading…</h1><span id="task-meta" hidden>TASK</span>
+  </section>
+  <main>
+    <div class="workspace">
+      <section class="viewer">
+        <div class="viewbar">
+          <div class="tabs" id="view-tabs"></div><div id="selection-controls" class="toolbar"></div><button id="image-scale" aria-label="Show image at native resolution">100%</button><button id="toggle-navigation" aria-pressed="true" hidden>Controls</button><span id="view-meta"></span>
+        </div>
+        <div class="stage" id="stage">
+          <img id="scene" alt="Current task observation" draggable="false">
+          <video id="video" controls preload="metadata"></video>
+          <div id="markers"></div>
+          <div id="empty"><button id="start" class="primary">Open task</button></div>
+          <div id="busy"><span class="spinner"></span><span id="busy-text">Processing…</span></div>
+          <div id="crosshair"></div>
+        </div>
+        <div id="timeline"></div>
+        <div id="review-controls" hidden aria-label="Proposal review controls"></div>
+        <div id="navigation" aria-label="Camera controls"></div>
+      </section>
+      <aside id="tools"></aside>
+    </div>
+    <div class="commandbar"><span id="hint"></span><div id="completion" class="toolbar"></div></div>
+    <footer><span id="feedback" role="status">Connecting to task software…</span><button id="details">Observation details</button></footer>
+  </main>
+  <dialog id="finish-dialog">
+    <form id="finish-form">
+      <div class="dialog-head"><h2 id="finish-title">Save prediction</h2><button type="button" data-close="finish-dialog" aria-label="Close save dialog">×</button></div>
+      <p id="finish-summary"></p>
+      <label for="submit-reason">Reason</label>
+      <textarea id="submit-reason" required rows="3" placeholder="Why does this answer satisfy the task?"></textarea>
+      <div class="dialog-actions"><button type="button" data-close="finish-dialog">Cancel</button><button type="submit" class="primary">Save locally</button></div>
+    </form>
+  </dialog>
+  <dialog id="reference-dialog">
+    <div class="dialog-head"><h2>Reference videos</h2><button id="close-reference" aria-label="Close reference videos">×</button></div>
+    <div id="reference-tabs" class="tabs"></div><video id="reference-video" controls preload="metadata"></video>
+  </dialog>
+  <dialog id="pose-dialog">
+    <form id="pose-form">
+      <div class="dialog-head"><h2>Registered camera position</h2><button type="button" data-close="pose-dialog" aria-label="Close camera position">×</button></div>
+      <label for="pose-video">Source video</label><select id="pose-video"></select>
+      <label for="pose-seconds">Time (seconds)</label><input id="pose-seconds" type="number" min="0" value="0" step="any" required>
+      <div class="dialog-actions"><button type="button" data-close="pose-dialog">Cancel</button><button type="submit" class="primary">Go to pose</button></div>
+    </form>
+  </dialog>
+  <dialog id="rotate-dialog">
+    <form id="rotate-form">
+      <div class="dialog-head"><h2>Rotate camera</h2><button type="button" data-close="rotate-dialog" aria-label="Close camera rotation">×</button></div>
+      <div class="fieldrow"><label>Yaw (degrees)<input id="yaw-degrees" type="number" min="-180" max="180" value="0" step="any" required></label><label>Pitch (degrees)<input id="pitch-degrees" type="number" min="-89" max="89" value="0" step="any" required></label></div>
+      <div class="dialog-actions"><button type="button" data-close="rotate-dialog">Cancel</button><button type="submit" class="primary">Rotate</button></div>
+    </form>
+  </dialog>
+  <dialog id="details-dialog">
+    <div class="dialog-head"><h2>Observation details</h2><button data-close="details-dialog" aria-label="Close observation details">×</button></div>
+    <div id="details-content"></div>
+  </dialog>
+  <dialog id="instructions-dialog">
+    <div class="dialog-head"><h2>Task instructions</h2><button data-close="instructions-dialog" aria-label="Close instructions">×</button></div>
+    <p id="task-instructions"></p><h3>Controls</h3><p id="control-instructions"></p>
+  </dialog>
+  <script src="/app.js"></script>
+</body>
+</html>

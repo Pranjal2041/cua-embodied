@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer-Use Agents Are Embodied Generalists</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 rx=%224%22 fill=%22%232b7bbf%22/%3E%3Crect x=%223%22 y=%225%22 width=%2210%22 height=%226%22 rx=%223%22 fill=%22%2365dcb8%22/%3E%3C/svg%3E">
+<meta name="description" content="We ran a single computer-use agent across four embodied AI competitions at ECCV workshops, changing only the software, and ranked first, second, third, and sixth.">
+<meta property="og:title" content="Computer-Use Agents Are Embodied Generalists">
+<meta property="og:description" content="We ran a single computer-use agent across four embodied AI competitions at ECCV workshops, changing only the software, and ranked first, second, third, and sixth.">
+<meta property="og:image" content="https://pranjal2041.github.io/cua-embodied/assets/teaser.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TITLE -->
+<header id="hero">
+  <div class="container">
+    <h1 class="hero-title">Computer-Use Agents Are <span class="highlight">Embodied Generalists</span></h1>
+    <p class="hero-authors"><span>Pranjal Aggarwal · Sean Welleck</span><br>Carnegie Mellon University</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="paper.pdf" target="_blank" rel="noopener">📄 Paper</a>
+      <a class="btn" href="https://github.com/Pranjal2041/cua-embodied" target="_blank" rel="noopener">💻 Code</a>
+      <a class="btn" href="#citation">📚 BibTeX</a>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT? AND POSITION -->
+<section id="intro">
+  <div class="container narrow">
+    <div class="row">
+      <h2 class="row-label">What?</h2>
+      <p class="row-text">We ran a single computer-use agent across four embodied AI competitions at ECCV workshops,
+      changing only the software, and ranked <b>first</b>, <b>second</b>, <b>third</b>, and <b>sixth</b>.</p>
+    </div>
+    <div class="row">
+      <h2 class="row-label">Position</h2>
+      <p class="row-text">In many areas of AI, general-purpose models have increasingly replaced handcrafted methods and specialized architectures. We argue that embodied AI is poised for a similar shift. Our key claim is that embodied tasks can be formulated as interaction with digital software. Specifically, we build software that renders an agent's view of a physical environment on a screen and provides controls for acting in it. A computer-use agent (CUA) can then perform embodied tasks through the same screenshots and keyboard and mouse actions that it uses to operate ordinary software. Using a single CUA design and changing only the software, our entries win first-, second-, third-, and sixth-place prizes across four ECCV workshop competitions, without any competition-specific agent tuning. These results suggest that the skills CUAs learn on software, such as visual grounding, precise clicking, and exploration, already carry over to embodied tasks, giving CUAs a far broader scope in embodied AI than previously realized. We therefore advocate that computer-use agents can be embodied generalists. Further, we advocate that, by following the training strategy that made computer-use agents general, embodied AI can converge on a single general model as well, ushering in a new era of general embodied AI.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE THINK? -->
+<section id="think">
+  <h2 class="center-label">What We Think?</h2>
+  <div class="marquee" id="marquee">
+    <div class="marquee-track" id="marquee-track">
+      <button class="chip" data-q="q1">How is robotics different from computer use?</button>
+      <button class="chip" data-q="q2">Will VLAs still exist?</button>
+      <button class="chip" data-q="q3">How can a computer-use agent do embodied tasks?</button>
+      <button class="chip" data-q="q4">Would an API work as well as a GUI?</button>
+      <button class="chip" data-q="q5">What should embodied AI do next?</button>
+      <button class="chip" data-q="q6">Isn't the software doing most of the work?</button>
+      <button class="chip" data-q="q7">Did you tune the agent for each competition?</button>
+      <button class="chip" data-q="q9">Isn't a click much simpler than robot control?</button>
+      <button class="chip" data-q="q10">Is writing robot actions as text new?</button>
+      <button class="chip" data-q="q12">Are autoregressive models fast enough for embodied AI?</button>
+      <button class="chip" data-q="q13">Do GUI agents really match API agents now?</button>
+      <button class="chip" data-q="q14">Are computer-use agents really superhuman?</button>
+      <button class="chip" data-q="q15">Why are robot tasks in simulation easy to verify?</button>
+      <button class="chip" data-q="q16">What about teleoperation and egocentric videos?</button>
+    </div>
+  </div>
+  <div class="marquee" id="marquee-2" hidden>
+    <div class="marquee-track reverse" id="marquee-track-2"></div>
+  </div>
+  <p class="hint"><span class="on-hover">Click</span><span class="on-touch">Tap</span> a question to see our answer.</p>
+
+  <div class="container narrow">
+    <article class="qa" id="q1" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>How is robotics different from computer use?</h3>
+      <p>The main difference is time. A screen often changes slowly, so a computer-use agent can take its time before each click, while the physical world keeps moving and a robot must act as things change. Robots also act in 3D. A computer-use agent locates a target on the screen and clicks at the right coordinates. A robot must locate targets in 3D and coordinate its motors to reach the intended positions and orientations.</p>
+      <figure class="qa-fig"><a class="zoom" href="assets/qa/analogy.jpg" target="_blank" rel="noopener"><img src="assets/qa/analogy.jpg" alt="A grid with six columns, see, locate, act, keys, explore and time. For computer use, the examples are a screenshot, a small button, click(x, y), shortcuts and typing, menus and windows, and a screen that often changes slowly. For embodied AI, they are a camera image, a wall socket in a 3D scan, moving the gripper to a position and angle, opening or closing the gripper, rooms and viewpoints, and a world that keeps moving." loading="lazy"></a><figcaption>From our paper. Computer use and embodied AI require much of the same from an agent. The main difference is time.</figcaption></figure>
+      <p>Fine-grained motor control and real-time interaction may seem out of reach for computer-use agents. Yet in early 2024, precise clicking seemed equally out of reach, and today agents click precisely.</p>
+    </article>
+    <article class="qa" id="q2" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Will VLAs still exist?</h3>
+      <p>We expect them to merge into one general model. Most VLAs today add a dedicated action head to a vision-language model, since robot actions are continuous and discrete tokens seem too coarse to express them precisely.</p>
+      <p>Computer-use agents faced exactly this problem in early 2024. A screen of a million pixels is effectively a continuous space, and early agents relied on Set-of-Mark overlays or separate grounding models to click precisely. With enough training, neither turned out to be necessary. Today, the same model that writes code and solves mathematics problems writes click coordinates as ordinary text. We expect embodied AI to end up in the same place, with that model also controlling robots.</p>
+      <figure class="qa-fig"><div class="flow">
+<div class="flow-row"><div class="flow-label">Computer use</div>
+<div class="box old"><span class="when">Early 2024</span>A model plus Set-of-Mark overlays or a separate grounding model</div><div class="go"></div>
+<div class="box new"><span class="when">Today</span>One general model writes click coordinates as text<br><code>click(812, 433)</code></div></div>
+<div class="flow-row"><div class="flow-label">Embodied AI</div>
+<div class="box old"><span class="when">Today</span>Most VLAs add a dedicated action head to a vision-language model</div><div class="go"></div>
+<div class="box new"><span class="when">We expect</span>The same general model also controls robots</div></div>
+</div><figcaption>Computer use dropped its specialized grounding components. We expect embodied AI to drop specialized action heads the same way.</figcaption></figure>
+      <p>A preliminary experiment supports this. We trained Qwen3.5 9B, a standard vision-language model, and π<sub>0.5</sub> on the same 1,000 demonstrations of two tasks in a simulation with two robot arms. Qwen wrote its actions as plain text, with no action head. It matched π<sub>0.5</sub>, succeeding in <strong>56%</strong> of 1,000 unseen instances against <strong>59%</strong>.</p>
+    </article>
+    <article class="qa" id="q3" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>How can a computer-use agent do embodied tasks?</h3>
+      <p>We wrap each task in an app that the agent operates like any other software. For each of the four competitions, we built a GUI that renders the scene, a 3D scan, a video or a 360° panorama, with controls for moving, looking around and selecting. The agent sees screenshots and acts with the keyboard and mouse, as it would on any desktop.</p>
+      <figure class="qa-fig"><div class="shot"><img src="assets/opensun3d.jpg" alt="Our OpenSUN3D app showing a 3D scan of a room, with the target wall socket circled in yellow." loading="lazy"><span class="target" style="left:65.6%;top:76.6%"></span></div><figcaption>Our OpenSUN3D app. The task asks for the part of the scene needed to plug a device into the socket next to the table lamp, so the agent must find and select that socket. The yellow circle is for the reader only.</figcaption></figure>
+      <p>This works because both settings require the same core skill, grounding fine-grained actions in visual observations. Finding a small button and clicking it is much like finding a drawer handle in a 3D scan and selecting it. In OpenSUN3D, the agent did exactly this and ranked first without any training on 3D tasks, about ten points ahead of the next entry on AP25.</p>
+    </article>
+    <article class="qa" id="q4" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Would an API work as well as a GUI?</h3>
+      <p>We expect so for a capable agent, and in our tests the two performed about the same. With an API, the agent calls each operation in our apps as a text command, such as moving forward one meter, instead of clicking its button. We compared both on a subset of each competition's validation set, with the same model and the same underlying operations.</p>
+      <figure class="qa-fig"><div class="legend"><span><i style="background:#9aa3b2"></i>API</span><span><i style="background:var(--accent)"></i>GUI</span></div><div class="bars"><div class="bar-group"><div class="bar-name">VLNVerse<small>vision-language navigation, Avg SR@3</small></div><div class="bar-stack"><div class="bar"><span class="api" style="width:83.9%">83.9</span></div><div class="bar"><span class="gui" style="width:85.2%">85.2</span></div></div></div><div class="bar-group"><div class="bar-name">DialNav<small>dialogue navigation, endpoint success rate</small></div><div class="bar-stack"><div class="bar"><span class="api" style="width:67.4%">67.4</span></div><div class="bar"><span class="gui" style="width:63.4%">63.4</span></div></div></div><div class="bar-group"><div class="bar-name">OpenSUN3D<small>3D affordance segmentation, AP50</small></div><div class="bar-stack"><div class="bar"><span class="api" style="width:26.7%">26.7</span></div><div class="bar"><span class="gui" style="width:28.1%">28.1</span></div></div></div><div class="bar-group"><div class="bar-name">MeViSv2<small>motion-expression video segmentation, Final</small></div><div class="bar-stack"><div class="bar"><span class="api" style="width:95.8%">95.8</span></div><div class="bar"><span class="gui" style="width:94.6%">94.6</span></div></div></div></div><figcaption>Scores out of 100 on a subset of each validation set, with the same model and the same operations behind both interfaces. Each competition has its own metric, so compare within each pair.</figcaption></figure>
+      <p>The two stayed within four points of each other, and the GUI scored higher in two of the four competitions. We see GUIs and APIs as two choices of interface to the same software, and we expect a capable agent to perform equally well with either, although efficiency may differ.</p>
+    </article>
+    <article class="qa" id="q5" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>What should embodied AI do next?</h3>
+      <p>Follow the three phases that made computer-use agents general. First came visual grounding, with training data generated automatically from software, which exposes the identity and position of every interface element. Second came environments for reinforcement learning, with tasks and verifiers generated at scale. Third, agents are now being optimized for speed.</p>
+      <figure class="qa-fig"><div class="phases">
+<div class="phase"><h4><small>Phase 1</small>Visual grounding</h4>
+<p><b>Computer use</b>Software exposes every interface element, which yields grounding data at scale.</p>
+<p class="emb"><b>Embodied AI</b>Simulators expose every object and its 3D position, which yields the same.</p></div>
+<div class="phase"><h4><small>Phase 2</small>RL environments</h4>
+<p><b>Computer use</b>Generated tasks, environments and verifiers at scale.</p>
+<p class="emb"><b>Embodied AI</b>Physically realistic simulations with tasks and verifiers exposed through software.</p></div>
+<div class="phase"><h4><small>Phase 3</small>Speed</h4>
+<p><b>Computer use</b>Agents optimized for completion time, not only success.</p>
+<p class="emb"><b>Embodied AI</b>Faster models, hardware and harnesses for real-time control.</p></div>
+</div><figcaption>The three phases of computer-use agents and their counterparts in embodied AI.</figcaption></figure>
+      <p>Each phase has a direct counterpart in embodied AI. Simulators expose the identity and 3D position of every object, so they can generate grounding data at scale, given high enough visual fidelity. Physically realistic simulations, with tasks and verifiers available through software, can serve as RL environments. Faster models and hardware can make real-time control possible. This calls on embodied AI researchers to expose their simulators and robots through software that computer-use agents can operate, like the apps we built, and on developers of computer-use agents to include such software in training.</p>
+    </article>
+    <article class="qa" id="q6" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Isn't the software doing most of the work?</h3>
+      <p>The software provides tools, and the agent decides how to use them. In MeViSv2, the agent gets a video and a sentence that describes an object by its motion. Our app wraps SAM 3, which segments an object and tracks it through the video once the agent clicks it. The agent still has to watch the video, work out which object the sentence refers to, click it, judge the mask, refine or discard it, and decide when it is done. In VLNVerse, the app only moves the camera, and every navigation decision is the agent's.</p>
+      <figure class="qa-fig"><div class="split">
+<div class="agent"><h4>The agent decides</h4><ul>
+<li>Where to look and where to go</li><li>Which object the task refers to</li><li>When to use each tool</li>
+<li>Whether an output is right, and how to refine it</li><li>When the task is done</li></ul></div>
+<div><h4>The app provides</h4><ul>
+<li>A camera to move through the scene<small>VLNVerse and OpenSUN3D</small></li>
+<li>Click-prompted segmentation and tracking<small>SAM 3, in MeViSv2</small></li>
+<li>Point-prompted 3D masks and part proposals<small>PinPoint3D and VOLT, in OpenSUN3D</small></li>
+<li>A guide model that knows the destination<small>DialNav</small></li></ul></div>
+</div><figcaption>Who does what across our four entries.</figcaption></figure>
+      <p>This split is deliberate. Desktop software also holds powerful functionality that a computer-use agent operates. Keeping task-specific functionality in the software, rather than in the agent, lets the same agent move across very different embodied tasks.</p>
+    </article>
+    <article class="qa" id="q7" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Did you tune the agent for each competition?</h3>
+      <p>No. All four entries used the same agent implementation, system prompt, and keyboard and mouse action space. Between competitions, only the app and the task description changed, and each app comes with its own instructions, as any software does. We used Gemini 3.5 Flash and Gemini 3.6 Flash as released, with no fine-tuning.</p>
+      <figure class="qa-fig"><span class="pill">Same agent · same system prompt · same keyboard and mouse actions</span>
+<div class="four">
+<figure><img src="assets/vlnverse.jpg" alt="Our VLNVerse app, a first-person view of an indoor scene with movement controls." loading="lazy"><span>VLNVerse</span></figure>
+<figure><img src="assets/dialnav.jpg" alt="Our DialNav app, a 360° panorama with numbered exits and a chat panel." loading="lazy"><span>DialNav</span></figure>
+<figure><img src="assets/opensun3d.jpg" alt="Our OpenSUN3D app, a 3D scan of a room with selection tools." loading="lazy"><span>OpenSUN3D</span></figure>
+<figure><img src="assets/mevis.jpg" alt="Our MeViSv2 app, a video player with object selection tools." loading="lazy"><span>MeViSv2</span></figure>
+</div><figcaption>The four apps, one per competition. VLNVerse and DialNav are navigation, OpenSUN3D is 3D affordance segmentation, and MeViSv2 is video object segmentation.</figcaption></figure>
+    </article>
+    <article class="qa" id="q9" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Isn't a click much simpler than robot control?</h3>
+      <p>It looks simpler, but in early 2024 it was still too hard for AI agents. A screen of a million pixels is effectively a continuous space, and early agents could not act in it precisely on their own. They relied on Set-of-Mark overlays, numbered labels drawn over the screen so the model only had to name one, or on separate grounding models. With enough training, neither turned out to be necessary. Today a single model writes click coordinates directly as text.</p>
+      <figure class="qa-fig"><div class="screens">
+<div class="screen"><div class="bar-top"><i></i><i></i><i></i></div><div class="ui">
+<b><em>1</em></b><b><em>2</em></b><b><em>3</em></b><b><em>4</em></b><b class="hit"><em>5</em></b><b><em>6</em></b></div>
+<div class="out"><span class="when">Early 2024</span>The model names a label <code>5</code></div></div>
+<div class="screen"><div class="bar-top"><i></i><i></i><i></i></div><div class="ui">
+<b></b><b></b><b></b><b></b><b class="hit"></b><b></b><span class="dot" style="left:50%;top:72%"></span></div>
+<div class="out"><span class="when">Today</span>The model writes coordinates <code>click(812, 433)</code></div></div>
+</div><figcaption>An illustration. Set-of-Mark overlays let early agents name a label instead of a position. Today a single model writes pixel coordinates directly.</figcaption></figure>
+      <p>Robot control adds 3D and real time. But it is the same kind of problem, grounding a precise action in what the agent sees, so we argue for following the same development strategy in embodied AI.</p>
+    </article>
+    <article class="qa" id="q10" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Is writing robot actions as text new?</h3>
+      <p>Not entirely. RT-2 and OpenVLA already showed that robot actions can be written as tokens without an action head, by mapping discretized actions onto tokens in the model's vocabulary.</p>
+      <figure class="qa-fig"><div class="tokens">
+<div class="tok-row"><div class="who">RT-2</div><div class="what">Discretizes each action dimension into 256 bins and writes each bin as a number token, such as <code>132</code>.</div></div>
+<div class="tok-row"><div class="who">OpenVLA</div><div class="what">Overwrites its 256 least used tokens with the 256 bins.</div></div>
+<div class="tok-row us"><div class="who">Ours</div><div class="what">No action head and an unchanged tokenizer. Actions are plain text, like a computer-use agent's <code>click(812, 433)</code>.</div></div>
+</div><figcaption>Three ways to write robot actions as tokens.</figcaption></figure>
+      <p>Our experiment builds on a similar idea and goes further. We add no action head and do not even change the tokenizer. The model simply writes actions as text, in a format similar to how computer-use agents write click coordinates. Trained on the same 1,000 demonstrations as π<sub>0.5</sub>, a recent VLA with a dedicated action head, this plain vision-language model matched it, succeeding in <strong>56%</strong> of unseen instances against <strong>59%</strong>.</p>
+      <figure class="qa-fig"><div class="legend"><span><i style="background:#9aa3b2"></i>π<sub>0.5</sub>, with an action head</span><span><i style="background:var(--accent)"></i>Qwen3.5 9B, actions as plain text</span></div><div class="bars"><div class="bar-group"><div class="bar-name">Success rate (%)<small>two tasks, two robot arms, simulation</small></div><div class="bar-stack"><div class="bar"><span class="base" style="width:59%">59</span></div><div class="bar"><span class="ours" style="width:56%">56</span></div></div></div></div><figcaption>Both models were trained on the same 1,000 demonstrations and evaluated on 1,000 unseen instances.</figcaption></figure>
+    </article>
+    <article class="qa" id="q12" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Are autoregressive models fast enough for embodied AI?</h3>
+      <p>In our experiment, yes, and the model sat idle most of the time. The 9B model controlled two robot arms in simulation and received a new camera image every second, as π<sub>0.5</sub> did in the same setup. Each time, it either wrote an action, which can span more than a second, or chose not to act. Prefill took about 10% of the total time and decoding about 20%, so the model was idle for the remaining 70%.</p>
+      <figure class="qa-fig"><div class="timebar"><div class="pre" style="width:10%"></div><div class="dec" style="width:20%"></div><div class="idle" style="width:70%"></div></div>
+<div class="timelegend"><span><i style="background:#1f5f96"></i>Prefill, 10%</span><span><i style="background:var(--accent)"></i>Decoding, 20%</span><span><i style="background:var(--bg-elevated);border:1px solid var(--border)"></i>Idle, 70%</span></div><figcaption>Share of total time for the 9B model controlling two robot arms in simulation, with a new camera image every second.</figcaption></figure>
+      <p>That is without any optimization for speed. Computer-use agents are now being optimized for completion time, and embodied AI can do the same through rewards for finishing tasks in less time, faster inference hardware, and harnesses that interleave quick actions with slower planning.</p>
+    </article>
+    <article class="qa" id="q13" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Do GUI agents really match API agents now?</h3>
+      <p>The strongest ones do. In 2024, agents acting only through the screen lagged far behind agents with task-specific APIs, and on Programming with Pixels the gap narrowed with each Claude generation. ApprenticeBench now finds that the strongest agents of 2026, such as Fable 5.1 and GPT-6 Astra, do as well through the GUI as through APIs, or better.</p>
+      <p>Our own results agree. In our four apps, where every button had a matching API command, operating through the GUI cost little. The two stayed within four points, and the GUI scored higher in two of the four competitions.</p>
+    </article>
+    <article class="qa" id="q14" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Are computer-use agents really superhuman?</h3>
+      <p>In task success, yes. On the OSWorld tasks in <a href="https://cuaspeedrun.com" target="_blank" rel="noopener">CUA-Speedrun</a>, the best agent today, Claude Opus 5.5, completes <strong>96%</strong>, well above the <strong>72%</strong> that humans reach on OSWorld. When OSWorld was released in April 2024, the best model completed <strong>12%</strong>. In speed, agents are still slower than expert humans, which is why speed is the current phase of progress.</p>
+      <p>This rise took about two years, and it is the path we argue embodied AI can follow.</p>
+    </article>
+    <article class="qa" id="q15" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>Why are robot tasks in simulation easy to verify?</h3>
+      <p>Because the simulator exposes its full ground-truth state, while the policy sees only camera images. A verifier can read object poses, contact forces and material states, such as how much wine is in a glass. Checking success is then accurate even when doing the task is hard.</p>
+      <figure class="qa-fig"><a class="zoom" href="assets/qa/verify.jpg" target="_blank" rel="noopener"><img src="assets/qa/verify.jpg" alt="A wine-pouring simulation with three tasks and their verifiers. The policy sees camera images, while the verifier reads the wine in each glass, object poses and contact forces." loading="lazy"></a><figcaption>From Gym-Anything for Robotics, in a wine-pouring scene. The policy sees only camera images, while each task's verifier, marked V, reads the simulator state, for example to confirm 135 to 165 mL of wine in the glass with no spill.</figcaption></figure>
+      <p>In Gym-Anything for Robotics, every task has a deterministic verifier computed from the physical state of the simulation, with no VLM judge. We believe this asymmetry can provide more accurate rewards for RL and make tasks harder over time.</p>
+    </article>
+    <article class="qa" id="q16" hidden>
+      <button class="qa-close" aria-label="Close">×</button>
+      <h3>What about teleoperation and egocentric videos?</h3>
+      <p>We think they may still matter, mainly in pretraining and midtraining. RL benefits from a strong initial policy, and training such a policy requires trajectories, from teleoperation in the real world or in simulation, or from egocentric videos. This mirrors the training recipes of existing LLMs.</p>
+      <figure class="qa-fig"><div class="pipe">
+<div class="box"><h4>Pretraining and midtraining</h4><ul><li>Teleoperation</li><li>Egocentric videos</li></ul>
+<div class="why">A strong initial policy.</div></div>
+<div class="go"></div>
+<div class="box new"><h4>Reinforcement learning</h4><ul><li>Simulated environments</li><li>Verifiers</li></ul>
+<div class="why">Where we believe research matters more.</div></div>
+</div><figcaption>Where we expect teleoperation and egocentric videos to fit in training.</figcaption></figure>
+      <p>How much of this data is needed remains unclear. Based on the preliminary results in our paper, we believe that perhaps much of it will not be needed, and that research on RL environments will remain more important.</p>
+    </article>
+  </div>
+</section>
+
+<!-- COMPETITIONS -->
+<section id="competitions">
+  <div class="container">
+    <button class="comp-toggle" id="comp-toggle" aria-expanded="false" aria-controls="comp-grid">
+      Competitions <span class="tri">▾</span>
+    </button>
+    <div class="comp-grid" id="comp-grid" hidden>
+      <article class="comp-card">
+        <img src="assets/opensun3d.jpg" alt="Our OpenSUN3D software, showing a laser scan of a room and candidate masks.">
+        <div class="comp-body">
+          <div class="comp-head"><h3>OpenSUN3D</h3><span class="place gold">1st</span></div>
+          <p class="comp-task">Segment the part of a 3D scene needed for a described action, such as a handle for opening a drawer.</p>
+          <p class="comp-metric">AP50 <b>25.88</b> <span>(best other 21.45)</span><br>AP25 <b>36.52</b> <span>(best other 26.50)</span></p>
+          <details>
+            <summary>How our software works</summary>
+            <p>The software renders the laser scan of the scene, with free camera movement, rotation, and point selection.
+            The agent explores the scene, approaches the target, and clicks the relevant part. Each candidate mask appears
+            from four viewpoints. The agent can refine a selection with positive or negative points, move to another
+            viewpoint, or make a new selection, and then chooses which masks to save.</p>
+          </details>
+          <a class="comp-link" href="https://opensun3d.github.io/" target="_blank" rel="noopener">OpenSUN3D workshop ↗</a>
+        </div>
+      </article>
+      <article class="comp-card">
+        <img src="assets/mevis.jpg" alt="Our MeViSv2 software, showing a video player with a frame selector and object controls.">
+        <div class="comp-body">
+          <div class="comp-head"><h3>MeViSv2-Text</h3><span class="place silver">2nd</span></div>
+          <p class="comp-task">Segment the objects described by a motion expression throughout a video.</p>
+          <p class="comp-metric">Final <b>86.72</b> · J&amp;F <b>74.96</b><br>No-target accuracy <b>88.89</b></p>
+          <details>
+            <summary>How our software works</summary>
+            <p>The software provides a video player, a frame selector, and controls for adding, refining, and removing
+            objects. The agent chooses a frame and clicks each target, and SAM 3 segments these objects and propagates
+            their masks through the video. The agent reviews the tracked masks and can add positive or negative points,
+            remove an object, or select another one before running propagation again. A no-target control exports an
+            empty mask sequence.</p>
+          </details>
+          <a class="comp-link" href="https://arxiv.org/abs/2609.06078" target="_blank" rel="noopener">LSVOS challenge report ↗</a>
+        </div>
+      </article>
+      <article class="comp-card">
+        <img src="assets/dialnav.jpg" alt="Our DialNav software, showing a panorama with numbered exits and a message panel.">
+        <div class="comp-body">
+          <div class="comp-head"><h3>DialNav</h3><span class="place bronze">3rd</span></div>
+          <p class="comp-task">Reach a destination through dialogue with a remote guide.</p>
+          <p class="comp-metric">Endpoint success rate <b>65.26</b><br>SPL <b>52.87</b></p>
+          <details>
+            <summary>How our software works</summary>
+            <p>The software displays a 360° panorama, numbered exits to nearby viewpoints, a target clue, and a message
+            panel. The agent types descriptions and questions, reads the guide's replies, and clicks exits to move. A
+            guide model within the software knows the destination, infers the agent's location from its descriptions,
+            and returns directions.</p>
+          </details>
+          <a class="comp-link" href="https://ead-workshop.github.io/" target="_blank" rel="noopener">EAD workshop ↗</a>
+        </div>
+      </article>
+      <article class="comp-card">
+        <img src="assets/vlnverse.jpg" alt="Our VLNVerse software, showing a first-person view of a 3D scene with movement controls.">
+        <div class="comp-body">
+          <div class="comp-head"><h3>VLNVerse</h3><span class="place">6th</span></div>
+          <p class="comp-task">Navigate to a destination described in language.</p>
+          <p class="comp-metric">Avg SR@3 <b>87.30</b><br>NDTW <b>95.0 / 96.8</b>, third-highest of 74 entries</p>
+          <details>
+            <summary>How our software works</summary>
+            <p>The software is a 3D scene viewer with a first-person image and controls for moving and turning. The agent
+            moves with keyboard shortcuts or on-screen buttons, looks up or down, and adjusts the step size and rotation
+            angle. It uses the rendered views to find landmarks, explore rooms, and approach the target, and selects
+            stop when it arrives.</p>
+          </details>
+          <a class="comp-link" href="https://emr-workshop.github.io/" target="_blank" rel="noopener">EMR workshop ↗</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BIBTEX -->
+<section id="citation">
+  <div class="container narrow">
+    <h2 class="row-label">BibTeX</h2>
+    <div class="bibtex-wrap">
+      <button class="copy-btn" id="copy-bib">Copy</button>
+<pre class="bibtex" id="bibtex">@misc{aggarwal2026embodied,
+      title={Computer-Use Agents Are Embodied Generalists},
+      author={Pranjal Aggarwal and Sean Welleck},
+      year={2026},
+}</pre>
+    </div>
+  </div>
+</section>
+
+<footer>Computer-Use Agents Are Embodied Generalists · Carnegie Mellon University · 2026</footer>
+
+<script src="app.js"></script>
+<script data-goatcounter="https://cua-embodied.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

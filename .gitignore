@@ -1,0 +1,15 @@
+# Local settings
+.env
+configs/tasks.json
+
+# Run outputs
+outputs/
+
+# Python and Node
+__pycache__/
+*.py[cod]
+*.egg-info/
+node_modules/
+package-lock.json
+
+.DS_Store
