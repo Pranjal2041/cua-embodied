@@ -1,7 +1,7 @@
 # Computer-Use Agents Are Embodied Generalists
 
 Code for the paper by Pranjal Aggarwal and Sean Welleck.
-[Paper](https://pranjal2041.github.io/cua-embodied/paper.pdf) · [Website](https://pranjal2041.github.io/cua-embodied/)
+[Paper](https://arxiv.org/abs/2611.09847) · [Website](https://pranjal2041.github.io/cua-embodied/)
 
 We keep one computer-use agent fixed and build software for each embodied task.
 The agent sees screenshots and acts with a mouse and a keyboard. Each task's
